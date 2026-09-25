@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About & Documentation — ForenShield</title>
+  <meta name="description" content="Technical architecture, compliance standards, system requirements, and forensic methodology documentation for ForenShield v2.0."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <link rel="stylesheet" href="../css/pages.css"/>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <a href="../index.html" style="display:flex;align-items:center;gap:.75rem;">
+        <div class="nav-logo"><svg viewBox="0 0 40 40" fill="none"><path d="M20 4L34 11V20C34 28.284 27.732 35.766 20 38C12.268 35.766 6 28.284 6 20V11L20 4Z" fill="url(#sga)" stroke="#818cf8" stroke-width="1.5"/><path d="M14 20L18 24L26 16" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="sga" x1="6" y1="4" x2="34" y2="38"><stop stop-color="#4f46e5"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs></svg></div>
+        <span class="nav-brand-text">ForenShield<span class="nav-brand-version">v2.0</span></span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Dashboard</a></li>
+      <li><a href="drive-eraser.html" class="nav-link">Drive Eraser</a></li>
+      <li><a href="file-eraser.html" class="nav-link">File Eraser</a></li>
+      <li><a href="file-recovery.html" class="nav-link">File Recovery</a></li>
+      <li><a href="reports.html" class="nav-link">Reports</a></li>
+      <li><a href="about.html" class="nav-link active">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="status-indicator"><span class="status-dot"></span><span class="status-text">System Secure</span></div>
+      <button class="btn-icon" id="themeToggle" title="Toggle Theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <div class="page-header">
+      <div class="page-title-group">
+        <div class="page-tag">Documentation</div>
+        <h1 class="page-title">About ForenShield</h1>
+        <p class="page-subtitle">Technical architecture, compliance methodology, forensic standards, and system documentation</p>
+      </div>
+    </div>
+
+    <!-- SIH Project Card -->
+    <div class="panel" style="margin-bottom:2rem;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(139,92,246,.08));border-color:rgba(99,102,241,.3);">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
+        <div>
+          <div style="font-size:.7rem;font-weight:700;color:var(--purple-light);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">Smart India Hackathon 2026</div>
+          <h2 style="font-size:1.4rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.75rem;">Design and Development of an Integrated Secure Data Erasure and Advanced File Recovery Tool for Digital Forensics and Data Sanitization</h2>
+          <p style="font-size:.875rem;color:var(--text-secondary);line-height:1.7;max-width:700px;">ForenShield is a unified software platform that integrates military-grade secure data sanitization with advanced forensic-grade file carving and recovery. It addresses the critical need for a single, comprehensive tool that replaces multiple disparate solutions used by law enforcement, digital forensic investigators, cybersecurity professionals, and enterprise IT security teams.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.75rem;min-width:200px;">
+          <div style="padding:1rem;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;text-align:center;">
+            <div style="font-size:1.5rem;font-weight:800;font-family:var(--font-mono);color:var(--purple-light);">SIH 2026</div>
+            <div style="font-size:.72rem;color:var(--text-muted);">Edition</div>
+          </div>
+          <div style="padding:1rem;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;text-align:center;">
+            <div style="font-size:1.5rem;font-weight:800;font-family:var(--font-mono);color:var(--green);">v2.0</div>
+            <div style="font-size:.72rem;color:var(--text-muted);">Release</div>
+          </div>
+          <div style="padding:1rem;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;text-align:center;">
+            <div style="font-size:1rem;font-weight:700;color:var(--orange);">Digital Forensics</div>
+            <div style="font-size:.72rem;color:var(--text-muted);">Track</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architecture Diagram -->
+    <div class="panel" style="margin-bottom:1.5rem;">
+      <div class="panel-title" style="margin-bottom:1.5rem;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--purple-light)"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        System Architecture
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:2rem;">
+        <!-- Module cards -->
+        <div style="border:1px solid rgba(239,68,68,.25);background:rgba(239,68,68,.04);border-radius:12px;padding:1.25rem;">
+          <div style="font-size:.65rem;font-weight:700;color:#f87171;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">Module 01</div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:.5rem;">Secure Drive Eraser</div>
+          <div style="font-size:.78rem;color:var(--text-secondary);margin-bottom:1rem;">Low-level sector-by-sector overwrite engine with hardware command support</div>
+          <div style="display:flex;flex-direction:column;gap:.35rem;">
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(239,68,68,.08);border-radius:6px;color:#fca5a5;">→ ATA Secure Erase</div>
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(239,68,68,.08);border-radius:6px;color:#fca5a5;">→ NVMe Format NVM</div>
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(239,68,68,.08);border-radius:6px;color:#fca5a5;">→ SCSI SANITIZE</div>
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(239,68,68,.08);border-radius:6px;color:#fca5a5;">→ Multi-pass Overwrite</div>
+          </div>
+        </div>
+        <div style="border:1px solid rgba(245,158,11,.25);background:rgba(245,158,11,.04);border-radius:12px;padding:1.25rem;">
+          <div style="font-size:.65rem;font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">Module 02</div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:.5rem;">File & Folder Eraser</div>
+          <div style="font-size:.78rem;color:var(--text-secondary);margin-bottom:1rem;">File-level selective deletion with full trace and metadata elimination</div>
+          <div style="display:flex;flex-direction:column;gap:.35rem;">
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(245,158,11,.08);border-radius:6px;color:#fde68a;">→ MFT Entry Scrubbing</div>
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(245,158,11,.08);border-radius:6px;color:#fde68a;">→ Slack Space Overwrite</div>
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(245,158,11,.08);border-radius:6px;color:#fde68a;">→ Registry Cleaning</div>
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(245,158,11,.08);border-radius:6px;color:#fde68a;">→ EXIF/Metadata Wipe</div>
+          </div>
+        </div>
+        <div style="border:1px solid rgba(99,102,241,.25);background:rgba(99,102,241,.04);border-radius:12px;padding:1.25rem;">
+          <div style="font-size:.65rem;font-weight:700;color:var(--purple-light);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">Module 03</div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:.5rem;">File Carving & Recovery</div>
+          <div style="font-size:.78rem;color:var(--text-secondary);margin-bottom:1rem;">Forensic-grade recovery using multi-technique carving and AI classification</div>
+          <div style="display:flex;flex-direction:column;gap:.35rem;">
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(99,102,241,.08);border-radius:6px;color:#c7d2fe;">→ Signature-Based Carving</div>
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(99,102,241,.08);border-radius:6px;color:#c7d2fe;">→ Structure Analysis</div>
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(99,102,241,.08);border-radius:6px;color:#c7d2fe;">→ AI-Assisted Hybrid</div>
+            <div style="font-size:.72rem;padding:.3rem .6rem;background:rgba(99,102,241,.08);border-radius:6px;color:#c7d2fe;">→ Fragment Reassembly</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layers -->
+      <div style="font-size:.85rem;font-weight:700;color:var(--text-secondary);margin-bottom:1rem;">Software Layer Stack</div>
+      <div style="display:flex;flex-direction:column;gap:.5rem;">
+        ${[
+          { layer:'User Interface Layer', tech:'HTML5 + CSS3 + JavaScript • SPA Architecture • Responsive Design', color:'rgba(99,102,241,.15)', border:'rgba(99,102,241,.3)', text:'var(--purple-light)' },
+          { layer:'Application Logic Layer', tech:'Python 3.11 Core Engine • REST API • WebSocket Real-time Updates', color:'rgba(6,182,212,.08)', border:'rgba(6,182,212,.25)', text:'var(--cyan)' },
+          { layer:'Forensic Engine Layer', tech:'C/C++ Low-Level I/O • libewf (E01) • pytsk3 (TSK) • pyflag Carving', color:'rgba(16,185,129,.08)', border:'rgba(16,185,129,.25)', text:'var(--green)' },
+          { layer:'Cryptography Layer', tech:'AES-256-GCM • SHA-256/512 • RSA-4096 • PBKDF2 • Python cryptography lib', color:'rgba(245,158,11,.08)', border:'rgba(245,158,11,.25)', text:'var(--orange)' },
+          { layer:'Hardware Abstraction Layer', tech:'libata (ATA SE) • nvme-cli (NVMe) • sg3_utils (SCSI) • kernel block I/O', color:'rgba(239,68,68,.08)', border:'rgba(239,68,68,.25)', text:'#f87171' },
+          { layer:'Storage Layer', tech:'HDD • SSD • NVMe • USB • SD Card • E01 / DD Image • AFF Image', color:'rgba(156,163,175,.08)', border:'rgba(156,163,175,.25)', text:'var(--text-muted)' },
+        ].map(l=>`
+          <div style="padding:.875rem 1.25rem;background:${l.color};border:1px solid ${l.border};border-radius:8px;display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-size:.82rem;font-weight:700;color:${l.text};">${l.layer}</div>
+            <div style="font-size:.72rem;color:var(--text-muted);">${l.tech}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Standards & Compliance -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+      <div class="panel">
+        <div class="panel-title" style="margin-bottom:1rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--green)"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Erasure Standards Compliance
+        </div>
+        <table class="compliance-table">
+          <tr><th>Standard</th><th>Scope</th><th>Passes</th></tr>
+          <tr><td>NIST SP 800-88 Rev 1</td><td>HDD, SSD, Flash</td><td>1–3</td></tr>
+          <tr><td>DoD 5220.22-M (E&EL)</td><td>HDD, Magnetic</td><td>7</td></tr>
+          <tr><td>Gutmann Method</td><td>Magnetic HDD</td><td>35</td></tr>
+          <tr><td>AFSSI-5020</td><td>Air Force Systems</td><td>3</td></tr>
+          <tr><td>HMG IS5 (Baseline)</td><td>UK Gov. Standard</td><td>1</td></tr>
+          <tr><td>HMG IS5 (Enhanced)</td><td>UK Gov. Enhanced</td><td>3</td></tr>
+          <tr><td>IEEE 2883-2022</td><td>All media types</td><td>Varies</td></tr>
+          <tr><td>BSI/VSITR (Germany)</td><td>HDD</td><td>7</td></tr>
+        </table>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title" style="margin-bottom:1rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--purple-light)"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Regulatory Compliance
+        </div>
+        <table class="compliance-table">
+          <tr><th>Regulation</th><th>Requirement</th><th>Coverage</th></tr>
+          <tr><td>GDPR (EU) Art. 17</td><td>Right to Erasure</td><td>Full</td></tr>
+          <tr><td>HIPAA Security Rule</td><td>PHI Data Disposal</td><td>Full</td></tr>
+          <tr><td>PCI-DSS v4.0 §9.8</td><td>Cardholder Data</td><td>Full</td></tr>
+          <tr><td>SOX IT Controls</td><td>Financial Records</td><td>Full</td></tr>
+          <tr><td>ISO/IEC 27001:2022</td><td>A.8.10 Disposal</td><td>Full</td></tr>
+          <tr><td>DPDP Act 2023 (India)</td><td>Personal Data</td><td>Full</td></tr>
+          <tr><td>IT Act 2000 (India)</td><td>Data Security</td><td>Full</td></tr>
+          <tr><td>ISO/IEC 27037:2012</td><td>Digital Evidence</td><td>Full</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- System Requirements -->
+    <div class="panel" style="margin-bottom:1.5rem;">
+      <div class="panel-title" style="margin-bottom:1rem;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--purple-light)"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        System Requirements
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+        ${[
+          { title:'OS Support', items:['Windows 10/11 (x64)','Ubuntu 22.04+ LTS','Kali Linux 2024+','macOS 13+ (Ventura)','TAILS OS','Fedora 38+'] },
+          { title:'Hardware (Minimum)', items:['CPU: 64-bit Dual Core','RAM: 4 GB','Storage: 10 GB free','USB 3.0 port','SATA/NVMe interface','Network: Optional'] },
+          { title:'Hardware (Recommended)', items:['CPU: 8-core 3GHz+','RAM: 16 GB DDR4','Storage: 50 GB SSD','USB 3.2 Gen 2','PCIe 4.0 NVMe','TPM 2.0 chip'] },
+          { title:'Software Dependencies', items:['Python 3.11+','libewf 20230104','The Sleuth Kit (TSK)','OpenSSL 3.0+','libpff','smartmontools'] },
+        ].map(s=>`
+          <div style="padding:1.25rem;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;">
+            <div style="font-size:.78rem;font-weight:700;color:var(--purple-light);margin-bottom:.875rem;">${s.title}</div>
+            ${s.items.map(i=>`<div style="font-size:.75rem;color:var(--text-secondary);padding:.25rem 0;border-bottom:1px solid rgba(255,255,255,.04);">• ${i}</div>`).join('')}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Team & Version -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+      <div class="panel">
+        <div class="panel-title" style="margin-bottom:1rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--purple-light)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Team Expertise
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.75rem;">
+          ${[
+            { role:'Team Lead / System Architect', skills:'OS internals, file systems, secure erasure algorithms' },
+            { role:'Forensic Engine Developer', skills:'C/C++, disk I/O, TSK integration, sector analysis' },
+            { role:'Recovery & Carving Engineer', skills:'File carving, signature analysis, fragment reassembly' },
+            { role:'Security & Cryptography Lead', skills:'AES, SHA, RSA, audit logging, compliance' },
+            { role:'UI/UX & Frontend Developer', skills:'HTML/CSS/JS, dashboard design, data visualization' },
+            { role:'Testing & Validation Engineer', skills:'Forensic validation, test case design, documentation' },
+          ].map(m=>`
+            <div style="padding:.75rem;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px;">
+              <div style="font-size:.82rem;font-weight:700;color:var(--text-primary);">${m.role}</div>
+              <div style="font-size:.72rem;color:var(--text-muted);margin-top:.2rem;">${m.skills}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title" style="margin-bottom:1rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--purple-light)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Changelog & Version History
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.75rem;">
+          ${[
+            { ver:'v2.0', date:'Sep 2026', desc:'Full platform — all 3 modules integrated, AI carving, reporting, disk analyzer, hash utility' },
+            { ver:'v1.5', date:'Jul 2026', desc:'Recovery module with fragmented file reconstruction and confidence scoring' },
+            { ver:'v1.2', date:'May 2026', desc:'Added file/folder eraser with MFT scrubbing and metadata cleansing' },
+            { ver:'v1.0', date:'Mar 2026', desc:'Initial release — secure drive eraser with DoD 5220.22-M and NIST 800-88' },
+            { ver:'v0.8', date:'Jan 2026', desc:'Beta release — core erasure engine, basic verification, audit logging' },
+            { ver:'v0.1', date:'Nov 2025', desc:'Proof of concept — sector-level write engine proof' },
+          ].map((v,i)=>`
+            <div style="display:flex;gap:.875rem;padding:.75rem;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px;${i===0?'border-color:rgba(99,102,241,.3);background:rgba(99,102,241,.05);':''}">
+              <div style="font-family:var(--font-mono);font-size:.75rem;font-weight:700;color:${i===0?'var(--purple-light)':'var(--text-muted)'};white-space:nowrap;padding-top:.1rem;">${v.ver}</div>
+              <div>
+                <div style="font-size:.72rem;color:var(--text-muted);margin-bottom:.2rem;">${v.date}</div>
+                <div style="font-size:.78rem;color:var(--text-secondary);">${v.desc}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

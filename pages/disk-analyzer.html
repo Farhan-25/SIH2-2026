@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disk Image Analyzer — ForenShield</title>
+  <meta name="description" content="Analyze raw disk images, E01 forensic images, and live drives. Visualize partition maps, file system structures, and hex contents."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/styles.css"/>
+  <link rel="stylesheet" href="../css/pages.css"/>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <a href="../index.html" style="display:flex;align-items:center;gap:.75rem;">
+        <div class="nav-logo"><svg viewBox="0 0 40 40" fill="none"><path d="M20 4L34 11V20C34 28.284 27.732 35.766 20 38C12.268 35.766 6 28.284 6 20V11L20 4Z" fill="url(#sgd)" stroke="#818cf8" stroke-width="1.5"/><path d="M14 20L18 24L26 16" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="sgd" x1="6" y1="4" x2="34" y2="38"><stop stop-color="#4f46e5"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs></svg></div>
+        <span class="nav-brand-text">ForenShield<span class="nav-brand-version">v2.0</span></span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Dashboard</a></li>
+      <li><a href="drive-eraser.html" class="nav-link">Drive Eraser</a></li>
+      <li><a href="file-eraser.html" class="nav-link">File Eraser</a></li>
+      <li><a href="file-recovery.html" class="nav-link">File Recovery</a></li>
+      <li><a href="reports.html" class="nav-link">Reports</a></li>
+      <li><a href="disk-analyzer.html" class="nav-link active">Disk Analyzer</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="status-indicator"><span class="status-dot"></span><span class="status-text">System Secure</span></div>
+      <button class="btn-icon" id="themeToggle" title="Toggle Theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <div class="page-header">
+      <div class="page-title-group">
+        <div class="page-tag">Forensic Utilities</div>
+        <h1 class="page-title">Disk Image Analyzer</h1>
+        <p class="page-subtitle">Non-destructive analysis of disk images, partition structures, file system metadata, and hex contents</p>
+      </div>
+    </div>
+
+    <!-- Source Selection -->
+    <div class="panel" style="margin-bottom:1.5rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:1rem;align-items:end;">
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Source Type</label>
+          <select class="form-control" id="sourceType" onchange="updateSource()">
+            <option value="live">Live Drive</option>
+            <option value="raw">Raw Image (.img/.dd)</option>
+            <option value="e01">E01 Forensic Image</option>
+            <option value="aff">AFF Image</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Target Device / Image</label>
+          <select class="form-control" id="targetDevice">
+            <option>💾 Samsung SSD 860 EVO — 500 GB (/dev/sda)</option>
+            <option>🗄️ WD Blue 1TB — HDD (/dev/sdb)</option>
+            <option>🔌 Kingston USB 64GB (/dev/sdc)</option>
+            <option>💿 MicroSD 32GB (/dev/sdd)</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label">Read Mode</label>
+          <select class="form-control" id="readMode">
+            <option>Read-Only (Safe)</option>
+            <option>Cloned Image (Safest)</option>
+          </select>
+        </div>
+        <button class="btn-primary" onclick="analyzeImage()" id="analyzeBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Analyze
+        </button>
+      </div>
+    </div>
+
+    <!-- Disk Map Visualization -->
+    <div class="panel" style="margin-bottom:1.5rem;" id="diskMapPanel">
+      <div class="panel-title" style="margin-bottom:1rem;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--purple-light)"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+        Disk Layout Visualization
+      </div>
+      <canvas id="diskMap" width="1200" height="80" style="width:100%;height:80px;border-radius:8px;"></canvas>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:.75rem;" id="diskLegend"></div>
+      <div style="margin-top:1rem;font-size:.75rem;color:var(--text-muted);">Click on a partition to inspect its file system structure</div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div style="display:grid;grid-template-columns:320px 1fr;gap:1.5rem;">
+      <!-- Left: Partition Tree -->
+      <div>
+        <div class="panel" style="margin-bottom:1.5rem;">
+          <div class="panel-title" style="margin-bottom:.875rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--purple-light)"><polyline points="22 12 16 12 14 15 10 9 8 12 2 12"/></svg>
+            Partition Table (MBR/GPT)
+          </div>
+          <div id="partitionTree" style="font-family:var(--font-mono);font-size:.75rem;"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title" style="margin-bottom:.875rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--orange)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            SMART Data
+          </div>
+          <div id="smartData" style="font-size:.75rem;"></div>
+        </div>
+      </div>
+
+      <!-- Right: Detail Panels -->
+      <div>
+        <!-- Tabs -->
+        <div style="display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:1.5rem;">
+          <button class="tab-btn active" id="tab-fs" onclick="switchTab('fs')" style="padding:.625rem 1.25rem;font-size:.82rem;font-weight:600;background:none;border:none;border-bottom:2px solid var(--purple);color:var(--purple-light);cursor:pointer;">File System</button>
+          <button class="tab-btn" id="tab-hex" onclick="switchTab('hex')" style="padding:.625rem 1.25rem;font-size:.82rem;font-weight:600;background:none;border:none;border-bottom:2px solid transparent;color:var(--text-muted);cursor:pointer;transition:all .2s;">Hex Viewer</button>
+          <button class="tab-btn" id="tab-meta" onclick="switchTab('meta')" style="padding:.625rem 1.25rem;font-size:.82rem;font-weight:600;background:none;border:none;border-bottom:2px solid transparent;color:var(--text-muted);cursor:pointer;transition:all .2s;">FS Metadata</button>
+          <button class="tab-btn" id="tab-timeline" onclick="switchTab('timeline')" style="padding:.625rem 1.25rem;font-size:.82rem;font-weight:600;background:none;border:none;border-bottom:2px solid transparent;color:var(--text-muted);cursor:pointer;transition:all .2s;">Timeline</button>
+        </div>
+
+        <!-- File System Tab -->
+        <div id="panel-fs">
+          <div class="panel">
+            <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+              <input type="text" class="form-control" placeholder="🔍 Search files and directories..." id="fsSearch" oninput="filterFSTree()"/>
+            </div>
+            <div id="fsTree" style="font-family:var(--font-mono);font-size:.75rem;max-height:500px;overflow-y:auto;"></div>
+          </div>
+        </div>
+
+        <!-- Hex Viewer Tab -->
+        <div id="panel-hex" style="display:none;">
+          <div class="panel">
+            <div style="display:flex;gap:.75rem;margin-bottom:1rem;align-items:end;flex-wrap:wrap;">
+              <div class="form-group" style="margin-bottom:0;flex:1;">
+                <label class="form-label">Sector Offset (decimal)</label>
+                <input type="number" class="form-control" id="hexOffset" value="0" min="0" style="font-family:var(--font-mono);" onchange="renderHexView()"/>
+              </div>
+              <div class="form-group" style="margin-bottom:0;width:120px;">
+                <label class="form-label">Bytes/Row</label>
+                <select class="form-control" id="hexBytesPerRow" onchange="renderHexView()">
+                  <option value="16">16</option>
+                  <option value="32">32</option>
+                </select>
+              </div>
+              <button class="btn-outline" onclick="prevSector()">← Prev</button>
+              <button class="btn-outline" onclick="nextSector()">Next →</button>
+            </div>
+            <div id="hexView" style="font-family:var(--font-mono);font-size:.72rem;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:1rem;overflow-x:auto;max-height:460px;overflow-y:auto;"></div>
+          </div>
+        </div>
+
+        <!-- FS Metadata Tab -->
+        <div id="panel-meta" style="display:none;">
+          <div class="panel">
+            <div id="fsMeta"></div>
+          </div>
+        </div>
+
+        <!-- Timeline Tab -->
+        <div id="panel-timeline" style="display:none;">
+          <div class="panel">
+            <div style="font-size:.82rem;font-weight:700;color:var(--text-secondary);margin-bottom:1rem;">File System Activity Timeline</div>
+            <canvas id="timelineCanvas" width="800" height="200" style="width:100%;border-radius:8px;background:rgba(0,0,0,.2);"></canvas>
+            <div id="timelineList" style="margin-top:1.25rem;max-height:300px;overflow-y:auto;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/disk-analyzer.js"></script>
+</body>
+</html>
