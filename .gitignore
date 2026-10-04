@@ -126,6 +126,16 @@ reports/generated/
 *.report.json
 *.audit.json
 
+# ForenShield backend persistence (local data — don't commit)
+.forenshield/
+
+# sync.py saved remote config (contains local paths)
+.sync_config.json
+
+# Carved / recovered files output
+carved_*/
+_fswipe_*.tmp
+
 # Local dev settings overrides (never commit secrets)
 .env
 .env.local
@@ -137,6 +147,12 @@ secrets.js
 test-output/
 coverage/
 .nyc_output/
+.pytest_cache/
+.mypy_cache/
+htmlcov/
+
+# Python type stubs
+*.pyi
 
 # ─── Archives ───────────────────────────────────────────────
 *.7z

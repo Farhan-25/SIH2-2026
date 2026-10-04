@@ -4,17 +4,20 @@
 
 # 🛡️ ForenShield v2.0
 
-**Integrated Secure Data Erasure & Advanced Forensic File Recovery**
+**Integrated Digital Forensics & Secure Data Erasure Platform**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-2.0.0-6366f1?style=flat-square)](#)
-[![Track](https://img.shields.io/badge/Track-Digital%20Forensics-f59e0b?style=flat-square)](#)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3b82f6?style=flat-square&logo=python&logoColor=white)](#)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=flat-square&logo=fastapi&logoColor=white)](#)
+[![React](https://img.shields.io/badge/Streamlit-1.38-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](#)
+[![Vite](https://img.shields.io/badge/Pandas-2.2-150458?style=flat-square&logo=pandas&logoColor=white)](#)
+[![psutil](https://img.shields.io/badge/psutil-6.0-f59e0b?style=flat-square)](#)
+[![Scapy](https://img.shields.io/badge/Scapy-2.5-ef4444?style=flat-square)](#)
 [![Standards](https://img.shields.io/badge/Standards-NIST%20%7C%20DoD%20%7C%20ISO-818cf8?style=flat-square)](#compliance)
-[![Status](https://img.shields.io/badge/Status-Active%20Development-10b981?style=flat-square)](#)
 
-*A unified software platform that integrates military-grade secure data sanitization with advanced forensic-grade file carving and recovery.*
+*A unified full-stack digital forensics platform combining a live Python forensic engine with a modern Streamlit dashboard — designed for law enforcement, forensic analysts, and cybersecurity professionals.*
 
-[**Documentation**](pages/about.html) · [**Report Bug**](#contributing) · [**Request Feature**](#contributing)
+[**Quick Start**](#-quick-start) · [**API Docs**](docs/api/API_REFERENCE.md) · [**Architecture**](docs/ARCHITECTURE.md) · [**Setup Guide**](docs/setup/SETUP.md)
 
 </div>
 
@@ -22,107 +25,108 @@
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Core Modules](#core-modules)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Compliance Standards](#compliance)
-- [Architecture](#architecture)
-- [Roadmap](#roadmap)
-- [Team](#team)
-- [License](#license)
+- [Overview](#-overview)
+- [What's New in v2.0](#-whats-new-in-v20)
+- [Features](#-features)
+- [Tech Stack](#%EF%B8%8F-tech-stack)
+- [Project Structure](#-project-structure)
+- [Quick Start](#-quick-start)
+- [API Overview](#-api-overview)
+- [Architecture](#-architecture)
+- [Compliance Standards](#-compliance)
+- [Roadmap](#%EF%B8%8F-roadmap)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
 ## 🔍 Overview
 
-ForenShield is a unified web-based frontend platform developed for the **Smart India Hackathon 2026** under the **Digital Forensics & Cybersecurity** track. It addresses the critical need for a single, comprehensive tool that replaces multiple disparate solutions used by:
+ForenShield is a full-stack digital forensics platform built for **Smart India Hackathon 2026**.
 
-- 🏛️ Law enforcement agencies
-- 🔬 Digital forensic investigators
-- 🔐 Cybersecurity professionals
-- 🏢 Enterprise IT security teams
-- 🏥 Healthcare & compliance officers
+It combines a **Python FastAPI backend** — which talks directly to the OS via `psutil`, `scapy`, and native system calls — with a **Streamlit** dashboard that provides real-time forensic analysis across 13 specialized tools.
 
-> **Note:** This repository contains the **frontend implementation** of ForenShield. The UI is production-ready and designed for integration with a backend forensic engine.
+> Previous versions were frontend-only mockups. v2.0 ships a **live backend** with 50 real API endpoints that enumerate actual system processes, parse real PCAP files, compute real hashes, carve real files, and manage a persistent evidence locker.
+
+**Designed for:**
+- 🏛️ Law enforcement digital forensics units
+- 🔬 Incident response teams
+- 🔐 Cybersecurity analysts
+- 🏢 Enterprise IT security / eDiscovery
+
+---
+
+## 🆕 What's New in v2.0
+
+| Change | v1.x | v2.0 |
+|---|---|---|
+| **Backend** | None (frontend-only) | Python FastAPI — 50 live endpoints |
+| **Process Analysis** | Mock data | Real `psutil` enumeration with suspicion scoring |
+| **Network Analysis** | Mock data | Live connections + real PCAP parsing via Scapy |
+| **File Carving** | Simulated progress | Real background carving worker (17 signature types) |
+| **Hashing** | Browser Web Crypto only | Server-side MD5/SHA1/SHA256/SHA512 + entropy |
+| **Disk Info** | Mock partitions | Real `psutil.disk_partitions()` + I/O counters |
+| **Evidence Locker** | In-memory only | JSON-persisted with chain-of-custody log |
+| **Reports** | Mock | Real report generation with system metadata + export |
+| **Settings** | localStorage | Server-persisted JSON settings |
+| **Real-time** | None | SSE stream: live CPU/RAM/network every second |
 
 ---
 
 ## ✨ Features
 
-| Feature | Description |
+### 🔬 Forensic Analysis
+
+| Tool | What it does |
 |---|---|
-| 🗑️ **Secure Drive Eraser** | Military-grade full-disk sanitization with DoD 5220.22-M, Gutmann (35-pass), NIST 800-88 |
-| 📂 **File & Folder Eraser** | Selective file-level deletion with metadata scrubbing, MFT entry wipe, and slack space overwrite |
-| 🔄 **File Recovery** | AI-assisted forensic file carving with signature-based, structure, and fragment reassembly methods |
-| 🔐 **Hash Analyzer** | MD5, SHA-1, SHA-256, SHA-512, SHA-3 verification with file integrity comparison |
-| 💽 **Disk Analyzer** | SMART data analysis, bad sector mapping, drive health reporting |
-| 📊 **Reports** | Cryptographically-signed, chain-of-custody forensic audit reports with PDF export |
-| ⚙️ **Settings** | Granular configuration for erasure algorithms, compliance profiles, audit logging, and security |
-| 🌙 **Dark/Light Mode** | Full system-level theme support with preference persistence |
+| **Memory Forensics** | Enumerate live processes, detect C2-connected PIDs, extract strings, score suspicious processes by CPU/handles/name |
+| **Network Forensics** | Live connection map with C2 port detection, PCAP parsing via Scapy (packets, DNS, protocol distribution, IP intelligence) |
+| **Disk Analyzer** | Real partition listing + I/O stats, recursive directory tree scanner, large-file finder |
+| **Timeline Analyzer** | MAC (Modified/Accessed/Created) timestamp reconstruction across directory trees; modify timestamps for forensic testing |
+| **Hash Analyzer** | MD5, SHA-1, SHA-256, SHA-512 of text/uploaded/server files; entropy calculation; magic byte detection; constant-time comparison |
+| **Hex Viewer** | Server-side paginated hex dump with offset navigation, magic detection, pattern search |
+| **File Carving** | Background recovery worker — 17 signatures (JPEG, PNG, PDF, ZIP, EXE, ELF, RAR, 7Z, FLAC, MKV…) |
+
+### 🔐 Evidence & Chain of Custody
+
+| Tool | What it does |
+|---|---|
+| **Evidence Locker** | CRUD with SHA-256 integrity hashes, chain-of-custody log, per-item verification, JSON persistence |
+| **Reports** | Create case reports with system info snapshot, evidence references, section listing; export as text |
+| **Settings** | Server-persisted examiner name, agency, algorithm preferences, backend config |
+
+### 🗑️ Secure Erasure
+
+| Tool | What it does |
+|---|---|
+| **File Eraser** | Multi-pass overwriting (DoD 5220.22-M, Gutmann 35-pass, zeros, random CSPRNG) before deletion |
+| **Drive Eraser** | Free-space wiper via background task; sector-level temp-file fill + fsync |
 
 ---
 
-## 🧩 Core Modules
+## 🛠️ Tech Stack
 
-### Module 01 — Secure Drive Eraser
-Low-level sector-by-sector overwrite engine with hardware command support.
-- ATA Secure Erase & Enhanced Secure Erase
-- NVMe Format NVM command
-- SCSI SANITIZE command
-- Multi-pass overwrite (1–35 passes)
-- Bad sector mapping and handling
-- Post-erase cryptographic verification
+### Backend
 
-### Module 02 — File & Folder Eraser
-File-level selective deletion with full trace and metadata elimination.
-- MFT (Master File Table) entry scrubbing
-- Slack space overwrite
-- Windows Registry cleaning
-- EXIF & metadata wipe
-- Recycle Bin purging
-- Temp file & thumbnail elimination
+```
+Python 3.10+
+├── fastapi 0.115          — REST framework + OpenAPI docs
+├── uvicorn[standard] 0.30 — ASGI production server
+├── pydantic 2.8           — Data validation & schemas
+├── psutil 6.0             — Live system/process/network/disk info
+├── scapy 2.5              — PCAP parsing & packet dissection
+├── python-multipart 0.0.9 — File upload support
+└── win32-setctime 1.1     — Windows ctime modification (optional)
+```
 
-### Module 03 — File Carving & Recovery
-Forensic-grade recovery using multi-technique carving and AI classification.
-- Signature-based file carving (47+ formats)
-- File structure analysis
-- AI-assisted hybrid recovery
-- Fragment reassembly for fragmented files
-- Chain-of-custody evidence tracking
-- Confidence scoring per recovered file
+### Frontend
 
-### Module 04 — Hash Analyzer
-Multi-algorithm cryptographic verification tool.
-- Supports MD5, SHA-1, SHA-256, SHA-512, SHA-3-256
-- File-to-hash comparison
-- Batch file verification
-- Hash database lookup
-- Real-time computation progress
-
-### Module 05 — Disk Analyzer
-Comprehensive storage device health and usage analysis.
-- SMART attribute monitoring
-- Partition map visualization
-- File system distribution charts
-- Predictive failure analysis
-- Bad sector heat map
-
----
-
-## 🖥️ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| **UI Framework** | Vanilla HTML5 + CSS3 + JavaScript (ES2022+) |
-| **Typography** | Inter (UI) + JetBrains Mono (code/data) via Google Fonts |
-| **Styling** | Custom CSS with CSS Variables design system |
-| **Animations** | CSS transitions + Web Animations API + IntersectionObserver |
-| **Storage** | localStorage / sessionStorage for settings & session state |
-| **Charts** | Pure SVG + CSS-driven data visualizations |
-| **Icons** | Inline SVG (zero external dependency) |
+```
+Python 3.10+ (Streamlit)
+├── streamlit 1.38         — Pure Python dashboard framework
+├── pandas 2.2             — Dataframes for tables & charts
+└── requests 2.32          — HTTP client to talk to FastAPI
+```
 
 ---
 
@@ -130,141 +134,218 @@ Comprehensive storage device health and usage analysis.
 
 ```
 forenshield/
-├── index.html                  # Dashboard (main entry point)
-├── LICENSE                     # MIT License
-├── README.md                   # This file
-├── .gitignore                  # Git ignore rules
+├── backend.py                  ← FastAPI server — 1,551 lines, 50 endpoints
+├── requirements.txt            ← pip install -r requirements.txt
+├── run.py                      ← ⚡ Start the whole project:  python run.py
+├── sync.py                     ← 🔄 Push to GitHub:          python sync.py
+├── package.json                ← Root npm config
+├── README.md
+├── LICENSE
+├── .gitignore
 │
-├── css/
-│   ├── styles.css              # Global design system, variables, layouts
-│   └── pages.css               # Page-specific component styles
+├── docs/                       ← Documentation
+│   ├── ARCHITECTURE.md
+│   ├── api/API_REFERENCE.md
+│   └── setup/SETUP.md
 │
-├── js/
-│   ├── main.js                 # Dashboard logic, global utilities, toast system
-│   ├── drive-eraser.js         # Drive sanitization UI logic
-│   ├── file-eraser.js          # File/folder eraser UI logic
-│   ├── file-recovery.js        # Recovery engine UI and carving logic
-│   ├── hash-analyzer.js        # Hash computation and verification logic
-│   ├── disk-analyzer.js        # Disk health and SMART data logic
-│   ├── reports.js              # Report generation and export logic
-│   └── settings.js             # Settings persistence and UI logic
-│
-└── pages/
-    ├── drive-eraser.html       # Drive Eraser page
-    ├── file-eraser.html        # File Eraser page
-    ├── file-recovery.html      # File Recovery page
-    ├── hash-analyzer.html      # Hash Analyzer page
-    ├── disk-analyzer.html      # Disk Analyzer page
-    ├── reports.html            # Reports & Audit Logs page
-    ├── settings.html           # Settings page
-    └── about.html              # Documentation & About page
+└── frontend/                   ← Streamlit frontend
+    ├── app.py                  ← Main dashboard
+    ├── .streamlit/             ← Theme config
+    └── pages/                  ← Forensic tool pages
+        ├── Memory_Forensics.py
+        ├── Network_Forensics.py
+        ├── Disk_Analyzer.py
+        ├── Timeline.py
+        ├── Hash_Analyzer.py
+        ├── Hex_Viewer.py
+        ├── File_Recovery.py
+        ├── Drive_Eraser.py
+        ├── Evidence_Locker.py
+        ├── Reports.py
+        ├── AI_Models.py
+        └── Settings.py
 ```
+
 
 ---
 
-## 🚀 Getting Started
-
-ForenShield is a pure frontend application — **no build step or server required**.
-
-### Prerequisites
-
-- A modern web browser (Chrome 90+, Firefox 88+, Edge 90+, Safari 14+)
-- Git (optional, for cloning)
-
-### Quick Start
-
-**Option 1 — Direct File Open**
+## 🚀 Quick Start
 
 ```bash
-# Clone the repository
+# Clone the repo
 git clone https://github.com/your-org/forenshield.git
 cd forenshield
 
-# Open in browser
-start index.html          # Windows
-open index.html           # macOS
-xdg-open index.html       # Linux
+# Start everything — installs deps, launches backend + frontend, opens browser
+python run.py
 ```
 
-**Option 2 — Local Dev Server (recommended)**
+That's it. `run.py` will:
+1. Auto-create a Python `venv` and install `requirements.txt` on first run
+2. (Node dependencies are no longer needed as the frontend is now Streamlit)
+3. Start the **FastAPI backend** on `http://127.0.0.1:8000`
+4. Start the **Streamlit frontend** on `http://localhost:8501`
+5. Open your browser automatically
+6. Stream both logs with colour-coded prefixes
+7. Shut both down cleanly on `Ctrl+C`
+
+```
+╔══════════════════════════════════════════════════════════╗
+║          ForenShield v2.0 — Digital Forensics            ║
+╚══════════════════════════════════════════════════════════╝
+
+  →  Checking dependencies
+  ✓  Python dependencies already satisfied
+  ✓  Node.js dependencies already satisfied
+
+  [BACKEND]  INFO:     Application startup complete.
+  [FRONTEND] You can now view your Streamlit app in your browser.
+  ✓  Backend ready  at http://127.0.0.1:8000
+  ✓  Frontend ready at http://localhost:8501
+```
+
+### Options
 
 ```bash
-# Using Python
-python -m http.server 8080
-
-# Using Node.js
-npx serve .
-
-# Using VS Code
-# Install "Live Server" extension → Right-click index.html → "Open with Live Server"
+python run.py --backend-only    # Only the Python API server
+python run.py --frontend-only   # Only the Streamlit dashboard
+python run.py --port 9000       # Use a different backend port
+python run.py --no-browser      # Don't auto-open the browser
 ```
 
-Then navigate to `http://localhost:8080` in your browser.
+> 💡 On Windows, run as **Administrator** for full forensic access (process enumeration, network connections).
 
 ---
 
-## 📐 Architecture
+## 📡 API Overview
+
+The backend exposes **50 REST endpoints** across 16 functional sections.
+
+Interactive docs: `http://127.0.0.1:8000/docs`
+
+| Section | Base Path | Description |
+|---|---|---|
+| System Health | `/api/health` | CPU, RAM, disk I/O, uptime, hostname |
+| Memory | `/api/memory/` | Live processes, deep-dive, strings, RAM snapshot |
+| Network | `/api/network/` | Connections, NIC interfaces, PCAP analysis |
+| Disk | `/api/disk/` | Partitions, directory tree, large-file finder |
+| Timeline | `/api/timeline/` | MAC times read/write, directory event scan |
+| Hash | `/api/hash/` | Text/file/path hashing, comparison |
+| Hex | `/api/hex/` | Hex dump, pattern search |
+| Recovery | `/api/recovery/` | File carving jobs, signatures list |
+| Eraser | `/api/eraser/` | Secure file delete, free-space wipe |
+| Evidence | `/api/evidence/` | CRUD, verify, chain-of-custody |
+| Reports | `/api/reports/` | Create, list, export |
+| Settings | `/api/settings/` | Get, update, reset |
+| Tasks | `/api/tasks/` | Background task polling |
+| Stream | `/api/stream/` | SSE: live metrics every second |
+| File Utils | `/api/file/` | Info (magic+entropy+hashes), strings |
+| Dir Utils | `/api/dir/` | Directory listing |
+
+→ Full reference: [docs/api/API_REFERENCE.md](docs/api/API_REFERENCE.md)
+
+---
+
+## 🏛️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    PRESENTATION LAYER                        │
-│        HTML5 Pages  ←→  CSS Design System  ←→  JS Modules   │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-┌──────────────────────────▼──────────────────────────────────┐
-│                    APPLICATION LAYER                         │
-│   ForenShield.toast()  │  Settings API  │  Session Storage   │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-┌──────────────────────────▼──────────────────────────────────┐
-│                 INTEGRATION LAYER  (Planned)                 │
-│     REST API  │  WebSocket real-time  │  File System API     │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-┌──────────────────────────▼──────────────────────────────────┐
-│                    BACKEND ENGINE (TBD)                      │
-│  Erasure Engine  │  Carving Engine  │  Hash Engine  │  SMART │
-└─────────────────────────────────────────────────────────────┘
+Streamlit Frontend (localhost:8501)
+        │
+        │ HTTP REST  ←→  SSE Stream
+        │
+FastAPI Backend (127.0.0.1:8000)
+        │
+        ├── psutil → OS (processes, network, disk, memory)
+        ├── scapy  → PCAP files
+        ├── hashlib / os → file hashing, timestamps, hex
+        ├── threading → background carving + wipe tasks
+        └── JSON files → evidence.json / reports.json / settings.json
 ```
+
+→ Full architecture: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 
 ---
 
 ## ✅ Compliance
 
-ForenShield is designed to comply with the following standards:
+ForenShield's erasure algorithms and forensic procedures align with:
 
-| Standard | Domain | Status |
+| Standard | Domain | Implemented |
 |---|---|---|
-| **NIST SP 800-88 Rev. 1** | Media Sanitization | ✅ Implemented |
-| **DoD 5220.22-M** | Defense Data Destruction | ✅ Implemented |
-| **IEEE 2883-2022** | Storage Device Sanitization | ✅ Implemented |
-| **ISO/IEC 27001:2022** | Information Security Management | ✅ Implemented |
-| **GDPR Article 17** | Right to Erasure | ✅ Implemented |
-| **HIPAA Security Rule** | Healthcare Data Protection | ✅ Implemented |
-| **PCI-DSS v4.0** | Payment Card Industry | ✅ Implemented |
-| **SOX Section 802** | Financial Records | ✅ Implemented |
-| **HMG IS5** | UK Government Sanitization | ✅ Implemented |
+| **NIST SP 800-88 Rev. 1** | Media Sanitization | ✅ Clear + Purge methods |
+| **DoD 5220.22-M** | Defense Data Destruction | ✅ 3-pass random overwrite |
+| **Gutmann Method** | Maximum Security Erasure | ✅ 35-pass pattern wipe |
+| **IEEE 2883-2022** | Storage Sanitization | ✅ |
+| **ISO/IEC 27001:2022** | Information Security | ✅ Chain of custody, audit logs |
+| **GDPR Article 17** | Right to Erasure | ✅ Verifiable deletion |
+| **HIPAA Security Rule** | Healthcare Data | ✅ |
+| **PCI-DSS v4.0** | Payment Card Data | ✅ |
 
 ---
 
 ## 🗺️ Roadmap
 
-- [x] Dashboard with real-time activity feed
-- [x] Drive Eraser UI with algorithm selector
-- [x] File & Folder Eraser with target queue
-- [x] File Recovery with confidence scoring
-- [x] Hash Analyzer with multi-algorithm support
-- [x] Disk Analyzer with SMART data visualization
-- [x] Reports with audit trail
-- [x] Settings with full compliance profiles
-- [x] Light/Dark theme with persistence
-- [ ] Backend API integration (Node.js / Python)
+### v2.0 (Current)
+- [x] Python FastAPI backend — 50 live API endpoints
+- [x] Live process enumeration with suspicion scoring
+- [x] Real PCAP analysis via Scapy
+- [x] Background file carving (17 signatures)
+- [x] Multi-pass secure file erasure (DoD/Gutmann/zeros)
+- [x] JSON-persisted Evidence Locker with chain-of-custody
+- [x] Report generation with system metadata
+- [x] Server-persisted settings
+- [x] SSE real-time metrics stream
+- [x] requirements.txt + full documentation
+
+### v2.1 (Planned)
+- [ ] PDF report export (WeasyPrint / ReportLab)
+- [ ] Geo-IP lookup in network forensics (MaxMind DB)
+- [ ] Volatility3 integration for memory dump analysis
+- [ ] SQLite/PostgreSQL backend for evidence persistence
+- [ ] WebSocket real-time carving progress (replace polling)
 - [ ] Electron desktop app wrapper
-- [ ] Real-time WebSocket progress streaming
-- [ ] PDF report generation (server-side)
-- [ ] Plugin system for custom erasure algorithms
-- [ ] Multi-language (i18n) support
+
+### v3.0 (Future)
 - [ ] Role-based access control (RBAC)
+- [ ] Multi-case management
+- [ ] Cryptographic evidence signing
+- [ ] Plugin API for custom analyzers
+- [ ] Multi-language (i18n) support
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "feat: add your feature"`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+### Backend Development
+
+```bash
+# Install dev dependencies
+pip install -r requirements.txt httpx pytest pytest-asyncio
+
+# Run tests
+pytest tests/ -v
+
+# Check types
+mypy backend.py
+
+# Format
+black backend.py
+```
+
+### Frontend Development
+
+```bash
+cd forenshield-react
+npm run dev     # dev server with HMR
+npm run lint    # oxlint
+npm run build   # production build
+```
 
 ---
 
@@ -274,9 +355,10 @@ Built for **Smart India Hackathon 2026** — Digital Forensics & Cybersecurity T
 
 | Role | Responsibility |
 |---|---|
-| Frontend Development | UI/UX, CSS Design System, JavaScript Logic |
+| Backend Engineering | Python FastAPI, psutil, Scapy, forensic algorithms |
+| Frontend Engineering | Streamlit, Pandas, Python UI |
 | Forensic Research | Compliance standards, algorithm research |
-| Architecture | System design, API integration planning |
+| Architecture | System design, API contracts |
 
 ---
 
