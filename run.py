@@ -38,7 +38,7 @@ if not PYTHON.exists():
 
 BANNER = """
 ╔══════════════════════════════════════════════════════════╗
-║          ForenShield v2.0 — Digital Forensics            ║
+║               ForenShield — Digital Forensics            ║
 ║          SIH 2026  |  Python + React Full Stack          ║
 ╚══════════════════════════════════════════════════════════╝
 """

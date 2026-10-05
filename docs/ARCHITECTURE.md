@@ -1,4 +1,4 @@
-# Architecture — ForenShield v2.0
+# Architecture — ForenShield
 
 ## System Overview
 

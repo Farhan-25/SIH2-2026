@@ -1,4 +1,4 @@
-# Setup Guide — ForenShield v2.0
+# Setup Guide — ForenShield
 
 This guide walks you through setting up both the **Python backend** and the **Streamlit frontend** on Windows, Linux, or macOS.
 

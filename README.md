@@ -2,7 +2,7 @@
 
 <img src="https://img.shields.io/badge/Smart%20India%20Hackathon-2026-6366f1?style=for-the-badge&labelColor=0a0b0f" alt="SIH 2026"/>
 
-# 🛡️ ForenShield v2.0
+# 🛡️ ForenShield
 
 **Integrated Digital Forensics & Secure Data Erasure Platform**
 
@@ -26,7 +26,7 @@
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
-- [What's New in v2.0](#-whats-new-in-v20)
+- [What's New](#-whats-new)
 - [Features](#-features)
 - [Tech Stack](#%EF%B8%8F-tech-stack)
 - [Project Structure](#-project-structure)
@@ -46,7 +46,7 @@ ForenShield is a full-stack digital forensics platform built for **Smart India H
 
 It combines a **Python FastAPI backend** — which talks directly to the OS via `psutil`, `scapy`, and native system calls — with a **Streamlit** dashboard that provides real-time forensic analysis across 13 specialized tools.
 
-> Previous versions were frontend-only mockups. v2.0 ships a **live backend** with 50 real API endpoints that enumerate actual system processes, parse real PCAP files, compute real hashes, carve real files, and manage a persistent evidence locker.
+> Previous versions were frontend-only mockups. ForenShield ships a **live backend** with 50 real API endpoints that enumerate actual system processes, parse real PCAP files, compute real hashes, carve real files, and manage a persistent evidence locker.
 
 **Designed for:**
 - 🏛️ Law enforcement digital forensics units
@@ -56,9 +56,9 @@ It combines a **Python FastAPI backend** — which talks directly to the OS via 
 
 ---
 
-## 🆕 What's New in v2.0
+## 🆕 What's New
 
-| Change | v1.x | v2.0 |
+| Change | v1.x | Current |
 |---|---|---|
 | **Backend** | None (frontend-only) | Python FastAPI — 50 live endpoints |
 | **Process Analysis** | Mock data | Real `psutil` enumeration with suspicion scoring |
@@ -191,7 +191,7 @@ That's it. `run.py` will:
 
 ```
 ╔══════════════════════════════════════════════════════════╗
-║          ForenShield v2.0 — Digital Forensics            ║
+║               ForenShield — Digital Forensics            ║
 ╚══════════════════════════════════════════════════════════╝
 
   →  Checking dependencies
@@ -285,7 +285,7 @@ ForenShield's erasure algorithms and forensic procedures align with:
 
 ## 🗺️ Roadmap
 
-### v2.0 (Current)
+### Current
 - [x] Python FastAPI backend — 50 live API endpoints
 - [x] Live process enumeration with suspicion scoring
 - [x] Real PCAP analysis via Scapy

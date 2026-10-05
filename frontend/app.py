@@ -12,7 +12,7 @@ import pandas as pd
 API = "http://127.0.0.1:8000/api"
 
 st.set_page_config(
-    page_title="ForenShield v2.0",
+    page_title="ForenShield",
     page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="expanded",

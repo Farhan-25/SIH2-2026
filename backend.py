@@ -1,5 +1,5 @@
 """
-ForenShield Backend -- Rigorous Python FastAPI server v2.0
+ForenShield Backend -- Rigorous Python FastAPI server
 Sections: System Health, Memory Forensics, Network Forensics, Disk,
           Timeline/MAC, Hash Analyzer, Hex Viewer, File Recovery,
           Drive Eraser, Evidence Locker, Reports, Settings,
@@ -1625,7 +1625,7 @@ def get_ai_training_status(task_id: str):
 
 @app.on_event("startup")
 async def on_startup():
-    log.info("ForenShield backend v2.0 starting")
+    log.info("ForenShield backend starting")
     log.info("Data directory: %s", DATA_DIR)
     log.info("Platform: %s | Python: %s", platform.platform(), sys.version.split()[0])
     log.info("Scapy: %s | win32_setctime: %s", HAS_SCAPY, _win_setctime is not None)
